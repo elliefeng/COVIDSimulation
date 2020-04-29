@@ -32,8 +32,8 @@ public class Building extends JPanel implements ActionListener{
     int time = 0; //Track time as the simulation runs
     
     //Declares Wall sprites and positions of wall
-        private ArrayList<Wall> walls = new ArrayList<Wall>();
-        private ArrayList<Rectangle> r = new ArrayList<Rectangle>();
+        private Wall[] walls = new Wall[8];
+        private Rectangle[] r = new Rectangle[8];
         
         
     /* constructor will setup our main Graphic User Interface - a simple Frame! */
@@ -48,19 +48,30 @@ public class Building extends JPanel implements ActionListener{
         Wall hWall3 = new Wall(620, 400, "SocialDistancingImages/wall1.png", false);
         Wall hWall4 = new Wall(-25, 400, "SocialDistancingImages/wall1.png", false);
         
-        walls.add(vWall1);
+        
+        /*walls.add(vWall1);
         walls.add(hWall1);
         walls.add(vWall2);
         walls.add(hWall2);
         walls.add(vWall3);
         walls.add(hWall3);
         walls.add(vWall4);
-        walls.add(hWall4);
+        walls.add(hWall4);*/
+        walls[0] = vWall1;
+        walls[1] = hWall1;
+        walls[2] = vWall2;
+        walls[3] = hWall2;
+        walls[4] = vWall3;
+        walls[5] = hWall3;
+        walls[6] = vWall4;
+        walls[7] = hWall4;
         
+       //replace this with a nested for loop for array
         for(Wall w: walls)
         {
             r.add(w.getBounds());
           }
+
         
         // used for Control callback
         this.control = ctl;
@@ -80,7 +91,7 @@ public class Building extends JPanel implements ActionListener{
     }
     
     //Getter for ArrayList of Walls
-    public ArrayList<Wall> getWalls()
+    public Wall[] getWalls()
     {
         return walls;
     }
