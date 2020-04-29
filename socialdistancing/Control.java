@@ -159,10 +159,13 @@ public class Control {
         public void personToWallCollision(Person p) {
             
             Rectangle personRect = new Rectangle(p.x,p.y, p.width, p.height);
-            for(int i = 0; i < view.getWalls().size();i++)
+            Rectangle[] rect = view.getRectangles();
+            Wall[] wall = view.getWalls();
+            
+            for(int i = 0; i < wall.length;i++)
             {
-                if(view.getRectangles().get(i).intersects(personRect))
-                    if(view.getWalls().get(i).vertical)
+                if(rect[i].intersects(personRect))
+                    if(wall[i].vertical)
                     {
                         p.vx *= -1;
                     }

@@ -21,15 +21,15 @@ import javax.swing.Timer;
     Simulator implements an ActionListener which adds the method actionPerformed. This method is invoked by the 
     animation timer every timerValue(16ms).
 */
-public class Building extends JPanel implements ActionListener{
+public class Building extends Structure /*implements ActionListener*/{
     // serial suppresses warning
     private static final long serialVersionUID = 1L;
     
-    //simulation control objects/values
+    /*//simulation control objects/values
     JFrame frame;
     Control control; //
     Timer timer; //Event control    
-    int time = 0; //Track time as the simulation runs
+    int time = 0; //Track time as the simulation runs*/
     
     //Declares Wall sprites and positions of wall
         private Wall[] walls = new Wall[8];
@@ -38,6 +38,7 @@ public class Building extends JPanel implements ActionListener{
         
     /* constructor will setup our main Graphic User Interface - a simple Frame! */
     public Building(Control ctl, String title) {
+    	super(ctl, title);
         Wall vWall1 = new Wall(550, 0, "SocialDistancingImages/wall2.png", true);
         Wall vWall2 = new Wall(200, 0, "SocialDistancingImages/wall2.png", true);
         Wall vWall3 = new Wall(550, 400, "SocialDistancingImages/wall2.png", true);
@@ -66,13 +67,14 @@ public class Building extends JPanel implements ActionListener{
         walls[6] = vWall4;
         walls[7] = hWall4;
         
-       //replace this with a nested for loop for array
-        for(Wall w: walls)
-        {
-            r.add(w.getBounds());
-          }
-
         
+       //populate the Rectangle array
+        for (int i=0; i<walls.length; i++)
+        {
+        	r[i] = walls[i].getBounds();
+        }
+
+        /*
         // used for Control callback
         this.control = ctl;
         
@@ -88,6 +90,7 @@ public class Building extends JPanel implements ActionListener{
         //make it visible
         frame.setVisible(true);
         frame.add(this); //add this class (JPanel) to the JFrame
+        */
     }
     
     //Getter for ArrayList of Walls
@@ -97,7 +100,7 @@ public class Building extends JPanel implements ActionListener{
     }
     
     //Getter for ArrayList of Rectangles
-    public ArrayList<Rectangle> getRectangles()
+    public Rectangle[] getRectangles()
     {
         return r;
     }
@@ -121,7 +124,7 @@ public class Building extends JPanel implements ActionListener{
             
         }
     
-    
+    /*
     //activation of Simulator separated from Constructor 
     public void activate() {
         //Timer for animation
@@ -133,6 +136,7 @@ public class Building extends JPanel implements ActionListener{
         // frame becomes visible
         frame.setVisible(true);     
     }
+    */
     
     /* This invoked by Timer per period in milliseconds in timerValue  */
     @Override
