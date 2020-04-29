@@ -117,9 +117,11 @@ public class Building extends Structure /*implements ActionListener*/{
             g.setColor(Color.BLACK);
             g.setFont(new Font("Roboto", Font.BOLD, 20));
             
-            g.drawString("Sprouts", 610, 50);
-            g.drawString("Scripps Medical", 5, 50);
-            g.drawString("Board and Brew", 5, 440);
+            g.drawString("The Rubber", 610, 50);;
+            g.drawString("Chicken Factory", 610, 75);
+            g.drawString("Wuhan", 10, 50);
+            g.drawString("College Board", 5, 440);
+            g.drawString("Headquarters", 5, 465);
             g.drawString("Mr. M's House", 590, 440);
             
         }
